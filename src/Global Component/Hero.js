@@ -1,4 +1,5 @@
 import React from 'react';
+import 'animate.css';
 
 const SliderSection = () => {
   return (
@@ -13,18 +14,25 @@ const SliderSection = () => {
           <div className="container">
             <div className="rx_slider_text_img_area position-relative">
               <div className="rx_slider_text headline pera-content">
-                <span>Legal solutions for Business</span>
-                <h1>
+                <span className="animate__animated animate__fadeInUp animate__delay-1s">
+                  Legal solutions for Business
+                </span>
+                <h1 className="animate__animated animate__fadeInUp animate__delay-2s">
                   We are recognized
                   by honorable awards
                 </h1>
-                <p>
+                <p className="animate__animated animate__fadeInUp animate__delay-2s">
                   Our specialists share skills and resources to obtain optimal
                   results for our new clients. A full-service law firm in New York.
                 </p>
-                <a href="#">Our Expert Team</a>
+                <a
+                  href="#"
+                  className="animate__animated animate__fadeInUp animate__delay-2s"
+                >
+                  Our Expert Team
+                </a>
               </div>
-              <div className="rx_slider_side_img">
+              <div className="rx_slider_side_img animate__animated animate__fadeInRight animate__delay-1s ">
                 <img src="assets/img/home-4/slider/s-side.png" alt="Side Image" />
               </div>
             </div>

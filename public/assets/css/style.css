@@ -8881,7 +8881,7 @@ select:visited {
   line-height: 1.2;
   padding: 25px 0px 30px;
   opacity: 1;
-  -webkit-transform: translateY(50px);
+  -webkit-transform: translateY(50px) ;
       -ms-transform: translateY(50px);
           transform: translateY(50px);
 }
