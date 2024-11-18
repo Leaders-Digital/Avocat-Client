@@ -42,19 +42,21 @@ const HeaderBottom = props => {
                                     <li><Link href='/home-three' className={router.pathname == "/home-three" ? "active" : ""}>Home Three</Link></li>
                                 </ul> */}
                             </li>
-                            <li><Link href='/about' className={router.pathname == "/about" ? "active" : ""}>Nos Services</Link></li>
+                            <li><Link href='/practice' className={router.pathname == "/practice"}>Nos Services</Link></li>
 
-                            <li><Link href='/about' className={router.pathname == "/about" ? "active" : ""}>Qui Sommes Nous</Link></li>
+                            <li><Link href='/about' className={router.pathname == "/about"}>Qui Sommes Nous</Link></li>
 
                             {/* <li><Link href='/about' className={router.pathname == "/about" ? "active" : ""}>About</Link></li>
 
                             <li><Link href='/about' className={router.pathname == "/about" ? "active" : ""}>About</Link></li> */}
+
                             {/* <li><Link href='/practice' className={router.pathname == "/practice" || router.pathname == "/practice/[id]" ? "active" : ""}>Practice</Link>
                                 <ul className="subMenu">
                                     <li><Link href='/practice' className={router.pathname == "/practice" ? "active" : ""}>Practice areas</Link></li>
                                     <li><Link href='/practice/1' className={router.pathname == "/practice/1" ? "active" : ""}>Practice areas single</Link></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <Link href='/case-stadies' className={router.pathname == "/case-stadies" || router.pathname == "/case-stadies/[id]" ? "active" : ""}>Cases</Link>
                                 <ul className="subMenu">
@@ -62,6 +64,7 @@ const HeaderBottom = props => {
                                     <li><Link href='/case-stadies/1' className={router.pathname == "/case-stadies/1" ? "active" : ""}>Cases single</Link></li>
                                 </ul>
                             </li>
+
                             <li><Link href='/blog' className={router.pathname == "/blog" || router.pathname == "/blog/[id]" ? "active" : ""}>Blog</Link>
                                 <ul className="subMenu">
                                     <li><Link href='/blog' className={router.pathname == "/blog" ? "active" : ""}>Blog left sidebar</Link></li>
@@ -69,12 +72,14 @@ const HeaderBottom = props => {
                                     <li><Link href='/blog-fullwidth' className={router.pathname == "/blog-fullwidth" ? "active" : ""}>Blog FullWidth</Link></li>
                                 </ul>
                             </li>
+
                             <li><Link href='/attorneys' className={router.pathname == "/attorneys" || router.pathname == "/attorneys/[id]" ? "active" : ""}>Attorneys</Link>
                                 <ul className='subMenu'>
                                     <li><Link href='/attorneys' className={router.pathname == "/attorneys" ? "active" : ""}>Attorneys</Link></li>
                                     <li><Link href='/attorneys/1' className={router.pathname == "/attorneys/1" ? "active" : ""}>Attorneys single</Link></li>
                                 </ul>
                             </li> */}
+
                             <li><Link href='/contact' className={router.pathname == "/contact" ? "active" : ""}>Contactez-nous</Link></li>
                         </ul>
                     </Grid>

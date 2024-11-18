@@ -11,7 +11,7 @@ const services = [
     {
         icon: "fi flaticon-scale",
         subtitle: 'Obtenez un',
-        title: 'Conseil Gratuit'
+        title: 'Conseil '
     },
     {
         icon: 'fi flaticon-network',

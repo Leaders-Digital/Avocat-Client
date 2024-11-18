@@ -11,38 +11,38 @@ import PricingTable from "../../components/PricingTable";
 import NewsLetter from '../../components/Newsletter'
 
 const breadcumbMenu = [
-    { name: 'Home', route: '/' },
-    { name: 'Practice area' }
+    { name: 'Accueil', route: '/' },
+    { name: 'Nos Service' }
 ]
 
 const Practice = () => {
     return (
         <Fragment>
             <Head>
-                <title>Practice</title>
+                <title>IBC - Nos Services</title>
             </Head>
             <header className="headerArea">
                 <HeaderTop className="headerTop" />
                 <HeaderBottom className="headerBottomArea headerBottomAreaStyelTwo" />
             </header>
             <Breadcumb
-                title="Practice Area"
+                title="Nos Services"
                 breadcumbMenu={breadcumbMenu}
                 background='/images/breadcumb/1.jpg'
             />
             <Service className="bgColor" />
             <ServiceArea
                 className="ourServiceAreaStyleThree bgFFF"
-                title="How Can We Help You"
-                subTitle="Area Of Practice"
+                title="Comment pouvons-nous vous aider ?" 
+                subTitle="Domaines d'expertise" 
             />
-            <PricingTable
+            {/* <PricingTable
                 title="Pricing Table"
                 subTitle="Our Pricing Plan"
             />
             <Testmonial
                 className="pt100"
-            />
+            /> */}
             <NewsLetter />
         </Fragment>
     )

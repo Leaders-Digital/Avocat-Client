@@ -40,9 +40,9 @@ const About = ({ subTitle, title, videoId, className = '', signature, pragraphs,
                         {pragraphs.map(text => (
                             <p key={text}>{text}</p>
                         ))}
-                        <Link href='/about'>
+                        {/* <Link href='/about'>
                             <Button className="btnStyle">Nos service</Button>
-                        </Link>
+                        </Link> */}
                         {signature && <Grid className="signature">
                             <img src={signature} alt="" />
                         </Grid>}

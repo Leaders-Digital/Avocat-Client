@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+import { Button } from '@mui/material'
 
 // components 
 import HeaderTop from '../components/HeaderTop'
@@ -17,9 +19,10 @@ import BlogArea from '../components/BlogArea'
 import NewsLetter from '../components/Newsletter'
 
 const aboutText = [
-    'Contrairement aux idées reçues, un cabinet d’avocats ne se limite pas à représenter ses clients devant les tribunaux. Il s’agit également d’un lieu où expertise, conseil et stratégie se rencontrent pour défendre vos droits.',
-    'Nos avocats s’appuient sur des années d’expérience et une compréhension approfondie du droit pour offrir des solutions personnalisées. Nous sommes dédiés à protéger vos intérêts et à vous guider dans toutes vos démarches juridiques.'
+    'Nous disposons d’une équipe expérimentée de comptables, avocats, juridiques, financiers, experts dans les affaires des entreprises et dans les consultations juridiques en droit tunisien. Nous proposons nos services aux particuliers et aux entreprises pour :',
+    'Encadrer juridiquement nos clients au moyen de conseils et de sous-traitance. Assurer la rédaction de contrats nationaux et internationaux de tout genre et dans trois principales langues (français, anglais et arabe). Mettre en œuvre les différents montages juridiques. Assister et représenter nos clients auprès des tribunaux et de l’administration tunisienne et étrangère. Faire l’audit et l’expertise juridique (identifier des risques et les lacunes d’ordre juridique et mettre en œuvre des recommandations de régularisation).'
 ];
+
 
 
 const portfolio = [
@@ -68,18 +71,24 @@ const Home = () => {
             </header>
             <HeroSlider />
             <Service className="bgColor" />
-            
-             <About
+
+            <About
                 title="À propos de nous"
                 images="/images/about/2.jpg"
-                signature="/images/about/1.png"
+                // signature="/images/about/1.png"
                 pragraphs={aboutText}
             />
-         {/*   <ServiceArea
-                title="How Can We Help You"
-                subTitle="Area Of Practice"
+            <ServiceArea
+                title="Comment pouvons-nous vous aider ?"
+                subTitle="Nos Service"
                 className="bgWhite"
+                limit={6}  // Limit to the first 6 services
             />
+
+                
+
+
+            {/*
             <Portfolio
                 title="Our Resent Case Studies"
                 subTitle="Here Our Best Work"
