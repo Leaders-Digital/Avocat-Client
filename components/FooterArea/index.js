@@ -44,7 +44,7 @@ const FooterArea = () => {
                             <Link href="/">
                                 <img src="/images/logo/logo.png" alt="logo" />
                             </Link>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature</p>
+                            <p>Nous disposons d’une équipe expérimentée de comptables, avocats, juridiques, financiers, experts dans les affaires des entreprises et dans les consultations juridiques en droit tunisien .</p>
                         </Grid>
                     </Grid>
                     {footerLinks.map((menu, i) => (

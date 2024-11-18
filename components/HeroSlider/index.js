@@ -101,7 +101,7 @@ const HeroSlider = ({ className = '' }) => {
                     >
                         <Grid container className="container">
                             <Grid item lg={8} xs={12}>
-                                <p>{slider.text}</p>
+                                <p style={{lineHeight:"30px"}}>{slider.text}</p>
                                 <h2><span>{slider.title}</span> <span>{slider.subTitle}</span></h2>
                                 <Link href="/contact" className="btnStyle btnStyle3">
                                     {slider.button}
