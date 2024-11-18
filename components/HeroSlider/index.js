@@ -7,14 +7,14 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const heroSliders = [
     {
-        images: '/images/slider/image.png',
+        images: '/images/slider/slide-1.jpg',
         title: 'Nous Défendons Vos Droits',
         subTitle: 'Avec Dévouement et Expertise.',
         text: 'Le Cabinet d’Avocats de Confiance pour Vos Besoins Juridiques',
         button: 'Contactez-nous dès maintenant'
     },
     {
-        images: '/images/slider/slide-5.jpg',
+        images: '/images/slider/slide-2.jpg',
         title: 'Votre Justice, Notre Priorité',
         subTitle: 'Toujours à Vos Côtés.',
         text: 'Le Cabinet d’Avocats Expérimenté à Votre Service',
