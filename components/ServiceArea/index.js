@@ -2,97 +2,95 @@ import React from "react";
 import { Grid } from "@mui/material";
 import Link from "next/link";
 import { Parallax } from "react-parallax";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "@mui/material"; // Make sure to import Button
-import { useRouter } from "next/router"; // Import useRouter hook
-// import {
-//   faBalanceScale,
-//   faBriefcase,
-//   faUsers,
-//   faMoneyBill,
-//   faLightbulb,
-//   faGavel,
-//   faHome,
-//   faGlobe,
-//   faShieldAlt,
-//   faCogs,
-// } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "@mui/material";
+import { useRouter } from "next/router";
+import BalanceScaleIcon from "@mui/icons-material/Scale";
+import BriefcaseIcon from "@mui/icons-material/Work";
+import PeopleIcon from "@mui/icons-material/Group";
+import MoneyBillIcon from "@mui/icons-material/AttachMoney";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import GavelIcon from "@mui/icons-material/Gavel";
+import HomeIcon from "@mui/icons-material/Home";
+import PublicIcon from "@mui/icons-material/Public";
+import ShieldIcon from "@mui/icons-material/Security";
+import LitigationIcon from "@mui/icons-material/Balance";
+import SettingsIcon from "@mui/icons-material/Settings";
 import SectionTitle from "../Title";
 
-// Liste des services avec icônes FontAwesome
+
 const services = [
   {
-    // icon: faBalanceScale,
+    icon: <BalanceScaleIcon />,
     title: "Conseil juridique général",
     content:
       "Consultations juridiques sur des questions spécifiques, comme les contrats, les litiges et l’interprétation des lois.",
     id: 1,
   },
   {
-    // icon: faBriefcase,
+    icon: <BriefcaseIcon />,
     title: "Droit des affaires",
     content:
       "Aide à la constitution de sociétés, rédaction de contrats commerciaux, et conseils en fusions et acquisitions.",
     id: 2,
   },
   {
-    // icon: faUsers,
+    icon: <PeopleIcon />,
     title: "Droit des sociétés",
     content:
       "Conseils en gouvernance d’entreprise et gestion des relations entre actionnaires.",
     id: 3,
   },
   {
-    // icon: faMoneyBill,
+    icon: <MoneyBillIcon />,
     title: "Droit fiscal",
     content:
       "Optimisation fiscale pour entreprises et particuliers, ainsi que représentation en cas de contentieux fiscal.",
     id: 4,
   },
   {
-    // icon: faLightbulb,
+    icon: <LightbulbIcon />,
     title: "Propriété intellectuelle",
     content:
       "Protection des droits d’auteur, marques, brevets et gestion des litiges en propriété intellectuelle.",
     id: 5,
   },
   {
-    // icon: faGavel,
+    icon: <GavelIcon />,
     title: "Droit social et droit du travail",
     content:
       "Rédaction de contrats de travail, gestion des relations collectives, et accompagnement en cas de litiges.",
     id: 6,
   },
   {
-    // icon: faHome,
+    icon: <HomeIcon />,
     title: "Droit immobilier",
     content:
       "Rédaction de baux, conseils en transactions immobilières et gestion des litiges immobiliers.",
     id: 7,
   },
   {
-    // icon: faGlobe,
+    icon: <PublicIcon />,
     title: "Droit international",
     content:
       "Accompagnement dans les litiges internationaux et rédaction de contrats entre entreprises de différents pays.",
     id: 8,
   },
   {
-    // icon: faShieldAlt,
+    icon: <ShieldIcon />,
     title: "Réglementation et conformité",
     content:
       "Assistance en conformité réglementaire et mise en place de politiques internes.",
     id: 9,
   },
   {
-    // icon: faBalanceScale,
+    icon: <LitigationIcon />,
     title: "Litiges et contentieux",
     content:
       "Représentation en justice, règlement amiable des différends, et recouvrement de créances.",
     id: 10,
   },
   {
-    // icon: faCogs,
+    icon: <SettingsIcon />,
     title: "Services aux entreprises",
     content:
       "Gestion de crise, accompagnement en cas de faillite ou restructuration d’entreprises.",
@@ -127,20 +125,13 @@ const ServiceArea = ({ className = "", title, subTitle, limit }) => {
           >
             <Grid className="serviceWrap">
               <Grid className="serviceIcon">
-                {/* <FontAwesomeIcon
-                  icon={service.icon}
-                  size="3x"
-                  className="icon"
-                /> */}
+                {service.icon}
               </Grid>
               <Grid className="serviceContent">
                 <h3>
-                  <Link
-                    href={`/practice/[id]`}
-                    as={`/practice/${service.id}`}
-                  >
+                  
                     {service.title}
-                  </Link>
+                
                 </h3>
                 <p>{service.content}</p>
               </Grid>
@@ -150,7 +141,7 @@ const ServiceArea = ({ className = "", title, subTitle, limit }) => {
 
         {/* Conditionally render the button only on the homepage */}
         {router.pathname === "/" && (
-          <Grid item xs={12} style={{textAlign:"center"}}>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
             <Link href="/practice">
               <Button className="btnStyle">
                 Voir tous les services
