@@ -18,6 +18,7 @@ const breadcumbMenu = [
 const Practice = () => {
     return (
         <Fragment>
+           
             <Head>
                 <title>IBC - Nos Services</title>
             </Head>
@@ -30,6 +31,7 @@ const Practice = () => {
                 breadcumbMenu={breadcumbMenu}
                 background='/images/breadcumb/1.jpg'
             />
+  
             <Service className="bgColor" />
             <ServiceArea
                 className="ourServiceAreaStyleThree bgFFF"
@@ -44,6 +46,7 @@ const Practice = () => {
                 className="pt100"
             /> */}
             <NewsLetter />
+
         </Fragment>
     )
 }

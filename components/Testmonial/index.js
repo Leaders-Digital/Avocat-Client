@@ -5,18 +5,19 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 const sliders = [
     {
-        text: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
+        text: "Il existe de nombreuses variantes de passages de Lorem Ipsum disponibles, mais la majorité ont été modifiées d'une manière ou d'une autre, par l'humour injecté.",
         images: '/images/testimonial/2.png',
         title: 'Jhony Goaver',
-        subTitle: 'CEO of American BDS'
+        subTitle: 'PDG de American BDS'
     },
     {
-        text: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
+        text: "Il existe de nombreuses variantes de passages de Lorem Ipsum disponibles, mais la majorité ont été modifiées d'une manière ou d'une autre, par l'humour injecté.",
         images: '/images/testimonial/2.png',
         title: 'Jhony Goaver',
-        subTitle: 'CEO of American BDS'
+        subTitle: 'PDG de American BDS'
     }
-]
+];
+
 const settings = {
     dots: true,
     infinite: true,
@@ -41,8 +42,8 @@ const Testmonial = ({ className = '' }) => {
                 </Hidden>
                 <Grid item md={7} sm={6} xs={12}>
                     <Grid className="testimonialContent">
-                        <span>What People Say</span>
-                        <h2>Client Testimonial</h2>
+                    <span>Ce que disent les gens</span>
+                    <h2>Témoignages des clients</h2>
                         <Slider className="testmonialSlider"
                             {...settings}>
                             {sliders.map((slider, i) => (

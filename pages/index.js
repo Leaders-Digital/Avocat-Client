@@ -65,11 +65,14 @@ const Home = () => {
             <Head>
                 <title>International business consulting</title>
             </Head>
+
             <header className="headerArea">
                 <HeaderTop className="headerTop" />
                 <HeaderBottom className="headerBottomArea" />
             </header>
+
             <HeroSlider />
+
             <Service className="bgColor" />
 
             <About
@@ -78,6 +81,7 @@ const Home = () => {
                 // signature="/images/about/1.png"
                 pragraphs={aboutText}
             />
+
             <ServiceArea
                 title="Comment pouvons-nous vous aider ?"
                 subTitle="Nos Service"
@@ -85,7 +89,9 @@ const Home = () => {
                 limit={6}  // Limit to the first 6 services
             />
 
-                
+<Testmonial />
+
+<ContactArea />
 
 
             {/*
@@ -95,8 +101,8 @@ const Home = () => {
                 portfolioItem={portfolio}
             />
             
-            <Testmonial />
-            <ContactArea />
+       
+          
             <TeamMember
                 title="Qualified Attorneys "
                 subTitle="Meet Our Experts"
