@@ -24,7 +24,7 @@ const HeaderTop = props => {
                 </Grid>
                 <Hidden smDown>
                     <Grid item lg={2} md={3} xs={12} className="text-right">
-                        <Link className="btnStyle btnOutlined btnRadius" href="/contact">Espace Membre</Link>
+                        <Link className="btnStyle btnOutlined btnRadius" href="/login">Espace Membre</Link>
                     </Grid>
                 </Hidden>
             </Grid>

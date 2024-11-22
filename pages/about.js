@@ -16,7 +16,7 @@ import NewsLetter from '../components/Newsletter'
 const aboutText = ['Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at', 'and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum'
 ]
 const breadcumbMenu = [
-    { name: 'Home', route: '/' },
+    { name: 'Accueil', route: '/' },
     { name: 'About us' }
 ]
 
@@ -44,11 +44,11 @@ const AboutPage = () => {
                 pragraphs={aboutText}
                 changeOrder="changeOrder"
             />
-            <ServiceArea
+            {/* <ServiceArea
                 className="ourServiceAreaStyleTwo"
                 title="How Can We Help You"
                 subTitle="Area Of Practice"
-            />
+            /> */}
             <Testmonial />
             <CounterArea
                 fullWidth={true}

@@ -892,7 +892,7 @@ body .ptb100 {
 }
 
 .headerArea .headerBottomArea {
-  background: #272c3f;
+  background: #234434;
   position: relative;
   display: flex;
   align-items: center;
@@ -1114,7 +1114,7 @@ body .ptb100 {
   top: 0;
   width: 40px;
   height: 40px;
-  background: #272c3f;
+  background: #234434;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -1159,7 +1159,7 @@ body .ptb100 {
 @media (max-width: 800px) {
   .headerArea .headerBottomArea.headerBottomAreaStyelTwo {
     position: relative;
-    background: #272c3f;
+    background: #234434;
   }
 }
 .headerArea.headerAreaStyleThree .headerBottomArea {
@@ -1167,11 +1167,11 @@ body .ptb100 {
 }
 @media (max-width: 768px) {
   .headerArea.headerAreaStyleThree .headerBottomArea {
-    background: #272c3f;
+    background: #234434;
   }
 }
 .headerArea.headerAreaStyleThree .headerBottomArea .MuiGrid-root.MuiGrid-container.container.css-1vam7s3-MuiGrid-root {
-  background: #272c3f;
+  background: #234434;
 }
 @media (max-width: 768px) {
   .headerArea.headerAreaStyleThree .headerBottomArea .MuiGrid-root.MuiGrid-container.container.css-1vam7s3-MuiGrid-root {
@@ -1193,7 +1193,7 @@ body .ptb100 {
 }
 
 .headerArea .headerTop {
-  background: #272c3f;
+  background: #234434;
 }
 .headerArea .headerTop .headerTopMainWrapper {
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -1475,7 +1475,7 @@ body .ptb100 {
 
 .newsLetterArea {
   padding: 74px 0 80px;
-  background: #272c3f;
+  background: #234434;
 }
 .newsLetterArea .newsletterWrap {
   max-width: 443px;

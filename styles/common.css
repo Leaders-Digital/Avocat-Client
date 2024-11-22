@@ -214,7 +214,7 @@
 
 
 .preloader {
-	background-color: #272c3f;
+	background-color: #234434;
 	width: 100%;
 	height: 100%;
 	position: fixed;
@@ -2042,7 +2042,7 @@ label.error {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: #272c3f!important;
+	background: #234434!important;
 	border: none;
 	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
@@ -2089,14 +2089,14 @@ label.error {
     z-index: 9999;
     height: 100vh;
     width: 250px;
-    background: #272c3f;
+    background: #234434;
     transition: all 0.3s ease 0s;
     box-shadow: 0px 10px 40px 0px rgba(50, 50, 50, 0.1);
     overflow-x: auto;
     overflow-y: scroll;
 }
 .responsivemenu .card-body{
-    background: #272c3f;
+    background: #234434;
 }
 .mobileMenu h2{
     padding-left: 20px;

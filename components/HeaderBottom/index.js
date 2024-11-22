@@ -35,7 +35,7 @@ const HeaderBottom = props => {
                             "responsiveWrapper active" :
                             "responsiveWrapper"}>
                         <ul className="mainMenuWrap">
-                            <li><Link href='/' className={router.pathname == "/" || router.pathname == "/home-two" ? "active" : ""}>Home</Link>
+                            <li><Link href='/' className={router.pathname == "/" || router.pathname == "/home-two" ? "active" : ""}>Accueil</Link>
                                 {/* <ul className="subMenu">
                                     <li><Link href='/' className={router.pathname == "/" ? "active" : ""}>Home One</Link></li>
                                     <li><Link href='/home-two' className={router.pathname == "/home-two" ? "active" : ""}>Home Two</Link></li>
@@ -45,6 +45,14 @@ const HeaderBottom = props => {
                             <li><Link href='/practice' className={router.pathname == "/practice"}>Nos Services</Link></li>
 
                             <li><Link href='/about' className={router.pathname == "/about"}>Qui Sommes Nous</Link></li>
+
+                            <li><Link href='/blog' className={router.pathname == "/blog" || router.pathname == "/blog/[id]" ? "active" : ""}>Blog</Link> </li>
+                                
+                           
+
+
+                            {/* <li><Link href='/about' className={router.pathname == "/about"}>Qui Sommes Nous</Link></li> */}
+
 
                             {/* <li><Link href='/about' className={router.pathname == "/about" ? "active" : ""}>About</Link></li>
 
@@ -65,13 +73,7 @@ const HeaderBottom = props => {
                                 </ul>
                             </li>
 
-                            <li><Link href='/blog' className={router.pathname == "/blog" || router.pathname == "/blog/[id]" ? "active" : ""}>Blog</Link>
-                                <ul className="subMenu">
-                                    <li><Link href='/blog' className={router.pathname == "/blog" ? "active" : ""}>Blog left sidebar</Link></li>
-                                    <li><Link href='/blog-right' className={router.pathname == "/blog-right" ? "active" : ""}>Blog Right sidebar</Link></li>
-                                    <li><Link href='/blog-fullwidth' className={router.pathname == "/blog-fullwidth" ? "active" : ""}>Blog FullWidth</Link></li>
-                                </ul>
-                            </li>
+                          
 
                             <li><Link href='/attorneys' className={router.pathname == "/attorneys" || router.pathname == "/attorneys/[id]" ? "active" : ""}>Attorneys</Link>
                                 <ul className='subMenu'>
