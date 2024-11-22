@@ -11,12 +11,12 @@ const HeaderTop = props => {
                 container
                 alignItems="center"
                 className="container headerTopMainWrapper">
-                <Grid item sm={6} md={5} lg={5} xs={12}>
+                <Grid item sm={6} md={5} lg={5} xs={6}>
                     <ul className="d-flex accountLoginArea">
                         <li><PlaceIcon /> Les Berges Du Lac 2</li>
                     </ul>
                 </Grid>
-                <Grid item sm={6} md={4} lg={5} xs={12}>
+                <Grid item sm={6} md={4} lg={5} xs={6}>
                     <ul className="headerContact">
                         <li><PhoneAndroidIcon /> +216 20202020</li>
                         {/* <li><QueryBuilderIcon /> 9AM - PM</li> */}

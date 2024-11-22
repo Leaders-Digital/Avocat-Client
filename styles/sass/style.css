@@ -751,7 +751,7 @@ body .ptb100 {
 }
 
 .footerArea {
-  background: #151a30;
+  background: #234434;
 }
 .footerArea .footerTopArea {
   padding: 50px 0px 20px;
@@ -1013,7 +1013,7 @@ body .ptb100 {
     left: 0;
     top: 100%;
     width: 100%;
-    background: #151a30;
+    background: #234434;
     transition: all 0.3s;
     z-index: 99;
     padding: 20px;
@@ -1282,12 +1282,12 @@ body .ptb100 {
 }
 @media (max-width: 767px) {
   .headerArea.headerAreaStyleThree .headerTop {
-    background: #151a30;
+    background: #234434;
   }
 }
 .headerArea.headerAreaStyleThree .headerTop .headerTopMainWrapper {
   padding: 10px 15px;
-  background: #151a30;
+  background: #234434;
 }
 .headerArea.headerAreaStyleThree .headerTop .headerTopMainWrapper .btnStyle a {
   padding: 9px 13px;

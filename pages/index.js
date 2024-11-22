@@ -67,7 +67,8 @@ const Home = () => {
             </Head>
 
             <header className="headerArea">
-                <HeaderTop className="headerTop" />
+
+                <HeaderTop className="headerTop"/>
                 <HeaderBottom className="headerBottomArea" />
             </header>
 
@@ -91,7 +92,7 @@ const Home = () => {
 
 <Testmonial />
 
-<ContactArea />
+{/* <ContactArea /> */}
 
 
             {/*

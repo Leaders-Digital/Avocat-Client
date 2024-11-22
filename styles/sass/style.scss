@@ -881,7 +881,7 @@ body {
 }
 
 .footerArea {
-    background: #151a30;
+    background: #234434;
 
     .footerTopArea {
         padding: 50px 0px 20px;
@@ -1196,7 +1196,7 @@ body {
                 left: 0;
                 top: 100%;
                 width: 100%;
-                background: #151a30;
+                background: #234434;
                 transition: all .3s;
                 z-index: 99;
                 padding: 20px;
@@ -1403,7 +1403,7 @@ body {
 .headerArea {
     .headerTop {
         .headerTopMainWrapper {
-            border-bottom: 1px solid rgba(255, 255, 255, .07);
+            // border-bottom: 1px solid rgba(255, 255, 255, .07);
             padding: 10px 0;
 
             @media (max-width:1200px) {
@@ -1411,7 +1411,7 @@ body {
             }
         }
 
-        background: #234434;
+        background: #1d382b;
 
         ul {
             display: flex;
@@ -1504,12 +1504,12 @@ body {
             padding: 0;
 
             @media (max-width:767px) {
-                background: #151a30;
+                background: #234434;
             }
 
             .headerTopMainWrapper {
                 padding: 10px 15px;
-                background: #151a30;
+                background: #234434;
 
                 .btnStyle {
                     a {
