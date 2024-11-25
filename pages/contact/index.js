@@ -46,7 +46,7 @@ const Contact = () => {
                         </Grid>
                     </Grid>
                     <Grid item md={7} xs={12}>
-                        <Grid className="contactUSForm">
+                        <Grid className="contactUSForm container">
                             <h3>Formulaire de Contact Rapide</h3>
                             <Form
                                 addressInfo={true}
