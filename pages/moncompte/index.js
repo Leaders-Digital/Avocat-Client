@@ -67,10 +67,10 @@ const columns = [
                 statut === 'en cours'
                     ? 'blue'
                     : statut === 'résolu'
-                    ? 'green'
-                    : statut === 'en appel'
-                    ? 'orange'
-                    : 'red';
+                        ? 'green'
+                        : statut === 'en appel'
+                            ? 'orange'
+                            : 'red';
             return <Tag color={color}>{statut}</Tag>;
         },
     },
@@ -100,30 +100,8 @@ const MonCompte = () => {
                 <Grid container spacing={2} className="container">
                     <Grid item md={12} xs={12}>
                         <Tabs defaultActiveKey="1">
-                            {/* Tab: Mon Compte */}
-                            <Tabs.TabPane tab="Mon Compte" key="1">
-                                <div style={{ padding: '20px' }}>
-                                    <h3>Détails du Client</h3>
-                                    <p><strong>Nom:</strong> {clientDetails.nom}</p>
-                                    <p><strong>Prénom:</strong> {clientDetails.prenom}</p>
-                                    <p><strong>Email:</strong> {clientDetails.email}</p>
-                                    <p><strong>Téléphone:</strong> {clientDetails.telephone}</p>
-                                    <h4>Changer le Mot de Passe</h4>
-                                    <Form layout="vertical">
-                                        <Form.Item label="Mot de Passe Actuel" name="currentPassword">
-                                            <Input.Password />
-                                        </Form.Item>
-                                        <Form.Item label="Nouveau Mot de Passe" name="newPassword">
-                                            <Input.Password />
-                                        </Form.Item>
-                                        <Form.Item label="Confirmer le Nouveau Mot de Passe" name="confirmPassword">
-                                            <Input.Password />
-                                        </Form.Item>
-                                        <Button type="primary" htmlType="submit"  style={{ backgroundColor: '#234434', borderColor: '#234434', color: '#fff' }}>
-                                        Mettre à jour</Button>
-                                    </Form>
-                                </div>
-                            </Tabs.TabPane>
+
+
 
                             {/* Tab: Mes Affaires */}
                             <Tabs.TabPane tab="Mes Affaires" key="2">
@@ -132,7 +110,7 @@ const MonCompte = () => {
                                     dataSource={affaireData}
                                     scroll={{
                                         x: 'max-content',
-                                      }}
+                                    }}
                                     expandable={{
                                         expandedRowRender: (record) => (
                                             <Collapse accordion>
@@ -154,6 +132,12 @@ const MonCompte = () => {
                                 <Calendar fullscreen={false} />
                             </Tabs.TabPane>
 
+                            {/* Tab: Document */}
+                            <Tabs.TabPane tab="Document" key="5">
+                                <h3>Mes Documents</h3>
+
+                            </Tabs.TabPane>
+
                             {/* Tab: Réclamation */}
                             <Tabs.TabPane tab="Réclamation" key="4">
                                 <h3>Formulaire de Réclamation</h3>
@@ -170,9 +154,34 @@ const MonCompte = () => {
                                     <Form.Item label="Message" name="message" rules={[{ required: true, message: 'Veuillez saisir un message' }]}>
                                         <Input.TextArea rows={4} />
                                     </Form.Item>
-                                    <Button type="primary" htmlType="submit"  style={{ backgroundColor: '#234434', borderColor: '#234434', color: '#fff' }}>
-                                    Envoyer</Button>
+                                    <Button type="primary" htmlType="submit" style={{ backgroundColor: '#234434', borderColor: '#234434', color: '#fff' }}>
+                                        Envoyer</Button>
                                 </Form>
+                            </Tabs.TabPane>
+
+                            {/* Tab: Mon Compte */}
+                            <Tabs.TabPane tab="Mon Compte" key="1">
+                                <div style={{ padding: '20px' }}>
+                                    <h3>Détails du Client</h3>
+                                    <p><strong>Nom:</strong> {clientDetails.nom}</p>
+                                    <p><strong>Prénom:</strong> {clientDetails.prenom}</p>
+                                    <p><strong>Email:</strong> {clientDetails.email}</p>
+                                    <p><strong>Téléphone:</strong> {clientDetails.telephone}</p>
+                                    <h4>Changer le Mot de Passe</h4>
+                                    <Form layout="vertical">
+                                        <Form.Item label="Mot de Passe Actuel" name="currentPassword">
+                                            <Input.Password />
+                                        </Form.Item>
+                                        <Form.Item label="Nouveau Mot de Passe" name="newPassword">
+                                            <Input.Password />
+                                        </Form.Item>
+                                        <Form.Item label="Confirmer le Nouveau Mot de Passe" name="confirmPassword">
+                                            <Input.Password />
+                                        </Form.Item>
+                                        <Button type="primary" htmlType="submit" style={{ backgroundColor: '#234434', borderColor: '#234434', color: '#fff' }}>
+                                            Mettre à jour</Button>
+                                    </Form>
+                                </div>
                             </Tabs.TabPane>
                         </Tabs>
                     </Grid>
