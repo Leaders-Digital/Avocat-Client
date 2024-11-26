@@ -1,223 +1,237 @@
-import React, { Component } from 'react'
-import Joi from 'joi-browser'
-import { Button, Grid } from '@mui/material'
+import React, { Component } from 'react';
+import Joi from 'joi-browser';
+import { Button, Grid } from '@mui/material';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+
 class Form extends Component {
     state = {
-        name: '',
+        userType: 'personne physique',
+        companyName: '',
+        firstName: '',
+        lastName: '',
         phone: '',
         email: '',
-        address: '',
         description: '',
-        error: {}
-    }
+        error: {},
+    };
 
     schema = {
-        email: Joi.string().email({ minDomainAtoms: 2 }).required().error(errors => {
-            errors.forEach(err => {
-                switch (err.type) {
-                    case "string.email":
-                        err.message = 'email mast be A Valid Email';
-                        break;
-                    default:
-                        err.message = 'email can not be empity';
-                        break;
-                }
-            });
-            return errors;
+        userType: Joi.string().required().error(() => 'Please select a user type.'),
+        companyName: Joi.when('userType', {
+            is: 'entreprise',
+            then: Joi.string().required().error(() => 'Company name cannot be empty.'),
+            otherwise: Joi.optional(),
         }),
-        phone: Joi.string().required().error(errors => {
-            errors.forEach(err => {
-                switch (err.type) {
-                    default:
-                        err.message = 'phone can not be Empity';
-                        break;
-                }
-            });
-            return errors;
+        firstName: Joi.when('userType', {
+            is: 'personne physique',
+            then: Joi.string().required().error(() => 'First name cannot be empty.'),
+            otherwise: Joi.optional(),
         }),
-        name: Joi.string().required().error(errors => {
-            errors.forEach(err => {
-                switch (err.type) {
-                    default:
-                        err.message = 'name can not be Empity';
-                        break;
-                }
-            });
-            return errors;
+        lastName: Joi.when('userType', {
+            is: 'personne physique',
+            then: Joi.string().required().error(() => 'Last name cannot be empty.'),
+            otherwise: Joi.optional(),
         }),
-        description: Joi.string().required().error(errors => {
-            errors.forEach(err => {
-                switch (err.type) {
-                    default:
-                        err.message = 'description can not be Empity';
-                        break;
-                }
-            });
-            return errors;
-        }),
-        address: Joi.string(),
-    }
-    changeHandler = event => {
-        const error = { ...this.state.error };
-        const errorMassage = this.validationProperty(event);
-        if (errorMassage) {
-            error[event.target.name] = errorMassage;
-        } else {
-            delete error[event.target.name];
-        }
-        this.setState({
-            [event.target.name]: event.target.value,
-            error
-        })
-    };
-    handleChange = (value) => {
-        this.setState({
-            country: value
-        })
+        phone: Joi.string().required().error(() => 'Phone number cannot be empty.'),
+        email: Joi.string()
+            .email({ minDomainAtoms: 2 })
+            .required()
+            .error(() => 'Please enter a valid email address.'),
+        description: Joi.string().required().error(() => 'Description cannot be empty.'),
     };
 
-    validationProperty = event => {
-        const Obj = { [event.target.name]: event.target.value };
-        const schema = { [event.target.name]: this.schema[event.target.name] }
-        const { error } = Joi.validate(Obj, schema);
-        return error ? error.details[0].message : null
+    changeHandler = (event) => {
+        const { name, value } = event.target;
+        const error = { ...this.state.error };
+
+        const errorMessage = this.validationProperty({ name, value });
+        if (errorMessage) error[name] = errorMessage;
+        else delete error[name];
+
+        this.setState({ [name]: value, error });
+    };
+
+    validationProperty = ({ name, value }) => {
+        const obj = { [name]: value };
+        const schema = { [name]: this.schema[name] };
+        const { error } = Joi.validate(obj, schema);
+        return error ? error.details[0].message : null;
     };
 
     validate = () => {
-        const options = { abortEarly: false }
-        const form = {
-            name: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone,
-            description: this.state.description,
-        }
-        const { error } = Joi.validate(form, this.schema, options)
+        const options = { abortEarly: false };
+        const { userType, companyName, firstName, lastName, phone, email, description } = this.state;
+        const data = { userType, companyName, firstName, lastName, phone, email, description };
+
+        const { error } = Joi.validate(data, this.schema, options);
         if (!error) return null;
 
         const errors = {};
-        for (let item of error.details) errors[item.path[0]] = item.message
+        for (let item of error.details) errors[item.path[0]] = item.message;
         return errors;
     };
 
-    submitHandler = event => {
-        event.preventDefault()
+    submitHandler = async (event) => {
+        event.preventDefault();
         const error = this.validate();
         if (error) {
+            this.setState({ error });
+            return;
+        }
+
+        const { userType, companyName, firstName, lastName, phone, email, description } = this.state;
+        const data = {
+            typeClient: userType,
+            nom_entreprise: companyName,
+            prenom: firstName,
+            nom: lastName,
+            telephone: phone,
+            email,
+            notes: description,
+        };
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/clients', data, {
+                headers: {
+                    'x-api-key': 'sk_test_51J0ZQvK5', // Replace with your actual API key
+                },
+            });
+            toast.success('Client added successfully!');
+            console.log('Response:', response.data);
+
             this.setState({
-                error: error || {}
-            })
-        } else {
-            this.setState({
-                name: '',
+                userType: 'personne',
+                companyName: '',
+                firstName: '',
+                lastName: '',
                 phone: '',
                 email: '',
-                address: '',
                 description: '',
-            })
-            toast.success('Please check Consol log')
+                error: {},
+            });
+        } catch (err) {
+            toast.error(err.response?.data?.error || 'An error occurred.');
+            console.error(err);
         }
-    }
+    };
 
     render() {
-
-        const options = [
-            { level: 'Family Law', value: 'family law' },
-            { level: 'Criminal Law', value: 'criminal law' },
-            { level: 'Business Law', value: 'business law' },
-            { level: 'Personal Injury', value: 'personal injury' },
-            { level: 'Education Law', value: 'education law' },
-            { level: 'Drugs Crime', value: 'drugs crime' },
-        ]
+        const { userType, companyName, firstName, lastName, phone, email, description, error } = this.state;
 
         return (
-            <form onSubmit={this.submitHandler} className='contactForm'>
+            <form onSubmit={this.submitHandler} className="contactForm">
                 <Grid container spacing={4}>
-                    <Grid item xs={12} sm={6} >
+                    {/* Dropdown for User Type */}
+                    <Grid item xs={12} sm={6}>
                         <Grid className="formInput">
-                            <input
-                                placeholder="Your Name"
-                                value={this.state.name}
-                                name="name"
-                                onChange={this.changeHandler}
+                            <select
                                 className="form-control"
-                                type="text" />
-                            {this.state.error.name && <p>{this.state.error.name}</p>}
+                                name="userType"
+                                value={userType}
+                                onChange={this.changeHandler}
+                            >
+                                <option value="personne physique">Personne</option>
+                                <option value="entreprise">Entreprise</option>
+                            </select>
+                            {error.userType && <p>{error.userType}</p>}
                         </Grid>
+                    </Grid>
 
-                    </Grid>
-                    <Grid item xs={12} sm={6} >
+                    {/* Conditional Fields */}
+                    {userType === 'entreprise' ? (
+                        <Grid item xs={12} sm={6}>
+                            <Grid className="formInput">
+                                <input
+                                    placeholder="Nom d'entreprise"
+                                    name="companyName"
+                                    value={companyName}
+                                    onChange={this.changeHandler}
+                                    className="form-control"
+                                    type="text"
+                                />
+                                {error.companyName && <p>{error.companyName}</p>}
+                            </Grid>
+                        </Grid>
+                    ) : (
+                        <>
+                            <Grid item xs={12} sm={6}>
+                                <Grid className="formInput">
+                                    <input
+                                        placeholder="Nom"
+                                        name="lastName"
+                                        value={lastName}
+                                        onChange={this.changeHandler}
+                                        className="form-control"
+                                        type="text"
+                                    />
+                                    {error.lastName && <p>{error.lastName}</p>}
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <Grid className="formInput">
+                                    <input
+                                        placeholder="Prenom"
+                                        name="firstName"
+                                        value={firstName}
+                                        onChange={this.changeHandler}
+                                        className="form-control"
+                                        type="text"
+                                    />
+                                    {error.firstName && <p>{error.firstName}</p>}
+                                </Grid>
+                            </Grid>
+                        </>
+                    )}
+
+                    {/* Other Fields */}
+                    <Grid item xs={12} sm={6}>
                         <Grid className="formInput">
                             <input
-                                placeholder="Phone"
-                                value={this.state.phone}
+                                placeholder="Telephone"
                                 name="phone"
+                                value={phone}
                                 onChange={this.changeHandler}
                                 className="form-control"
-                                type="phone" />
-                            {this.state.error.phone && <p>{this.state.error.phone}</p>}
+                                type="text"
+                            />
+                            {error.phone && <p>{error.phone}</p>}
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6} >
+                    <Grid item xs={12} sm={6}>
                         <Grid className="formInput">
                             <input
                                 placeholder="Email"
-                                value={this.state.email}
                                 name="email"
+                                value={email}
                                 onChange={this.changeHandler}
                                 className="form-control"
-                                type="email" />
-                            {this.state.error.email && <p>{this.state.error.email}</p>}
+                                type="email"
+                            />
+                            {error.email && <p>{error.email}</p>}
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6} >
-                        <Grid className="formInput">
-                            {this.props.addressInfo ? (
-                                <Grid className="formInput">
-                                    <input
-                                        placeholder="Address"
-                                        value={this.state.address}
-                                        name="address"
-                                        onChange={this.changeHandler}
-                                        className="form-control"
-                                        type="address" />
-                                </Grid>
-                            ) : (
-                                    <select
-                                        value={this.state.address}
-                                        className="form-control"
-                                        onChange={this.changeHandler}
-                                        name="address">
-                                        {options.map(option => (
-                                            <option
-                                                key={option.value}
-                                                value={option.value}
-                                            >
-                                                {option.level}
-                                            </option>
-                                        ))}
-                                    </select>
-                                )}
-
-                        </Grid>
-                    </Grid>
-                    <Grid xs={12} item >
+                    <Grid item xs={12}>
                         <Grid className="formInput">
                             <textarea
-                                className="form-control"
-                                value={this.state.description}
+                                placeholder="Notes"
+                                name="description"
+                                value={description}
                                 onChange={this.changeHandler}
-                                placeholder="Case Description..."
-                                name="description" />
-                            {this.state.error.description && <p>{this.state.error.description}</p>}
+                                className="form-control"
+                            />
+                            {error.description && <p>{error.description}</p>}
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6} >
-                        <Button type="submit">Appointment</Button>
+
+                    {/* Submit Button */}
+                    <Grid item xs={12} sm={6}>
+                        <Button type="submit">Submit</Button>
                     </Grid>
                 </Grid>
             </form>
-        )
+        );
     }
 }
-export default Form
+
+export default Form;
