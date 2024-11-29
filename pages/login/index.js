@@ -1,18 +1,36 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import Head from 'next/head'
 import HeaderTop from '../../components/HeaderTop'
 import HeaderBottom from '../../components/HeaderBottom'
 import Breadcumb from '../../components/Breadcumb'
 import { Grid, Button } from '@mui/material'
+import apiClient from '../../service/apiClient'
 
+import { useRouter } from "next/router"; // Import useRouter
 
 const breadcumbMenu = [
     { name: 'Accueil', route: '/' },
     { name: 'Login', },
 ]
-
-
 const Login = () => {
+    const router = useRouter(); // Initialize useRouter
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    console.log(email, password);
+
+    const loginClient = async () => {
+        try {
+            const res = await apiClient.post('/clients/login', { email, password })
+            router.push("/moncompte");
+        } catch (error) {
+            console.log(error);
+
+
+        }
+    }
+
 
 
     return (
@@ -43,13 +61,13 @@ const Login = () => {
                     <Grid item md={5} xs={12}>
 
                         <div class="contactForm">
-                            <div class="formInput" style={{paddingBottom:"15px"}}>
-                                <input type="email" placeholder="Adresse e-mail" required />
+                            <div class="formInput" style={{ paddingBottom: "15px" }}>
+                                <input type="email" placeholder="Adresse e-mail" required onChange={(e) => { setEmail(e.target.value) }} />
                             </div>
-                            <div class="formInput" style={{paddingBottom:"15px"}}>
-                                <input type="password" placeholder="Mot de passe" required />
+                            <div class="formInput" style={{ paddingBottom: "15px" }}>
+                                <input type="password" placeholder="Mot de passe" required onChange={(e) => { setPassword(e.target.value) }} />
                             </div>
-                            <button type="submit">Se connecter</button>
+                            <button onClick={loginClient}>Se connecter</button>
                         </div>
 
 

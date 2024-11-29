@@ -3,6 +3,7 @@ import Joi from 'joi-browser';
 import { Button, Grid } from '@mui/material';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import apiClient from '../../service/apiClient';
 
 class Form extends Component {
     state = {
@@ -17,30 +18,30 @@ class Form extends Component {
     };
 
     schema = {
-        userType: Joi.string().required().error(() => 'Please select a user type.'),
+        userType: Joi.string().required().error(() => 'Veuillez sélectionner un type d\'utilisateur.'),
         companyName: Joi.when('userType', {
             is: 'entreprise',
-            then: Joi.string().required().error(() => 'Company name cannot be empty.'),
+            then: Joi.string().required().error(() => 'Le nom de l\'entreprise ne peut pas être vide.'),
             otherwise: Joi.optional(),
         }),
         firstName: Joi.when('userType', {
             is: 'personne physique',
-            then: Joi.string().required().error(() => 'First name cannot be empty.'),
+            then: Joi.string().required().error(() => 'Le prénom ne peut pas être vide.'),
             otherwise: Joi.optional(),
         }),
         lastName: Joi.when('userType', {
             is: 'personne physique',
-            then: Joi.string().required().error(() => 'Last name cannot be empty.'),
+            then: Joi.string().required().error(() => 'Le nom de famille ne peut pas être vide.'),
             otherwise: Joi.optional(),
         }),
-        phone: Joi.string().required().error(() => 'Phone number cannot be empty.'),
+        phone: Joi.string().required().error(() => 'Le numéro de téléphone ne peut pas être vide.'),
         email: Joi.string()
             .email({ minDomainAtoms: 2 })
             .required()
-            .error(() => 'Please enter a valid email address.'),
-        description: Joi.string().required().error(() => 'Description cannot be empty.'),
+            .error(() => 'Veuillez entrer une adresse e-mail valide.'),
+        description: Joi.string().required().error(() => 'La description ne peut pas être vide.'),
     };
-
+    
     changeHandler = (event) => {
         const { name, value } = event.target;
         const error = { ...this.state.error };
@@ -92,11 +93,7 @@ class Form extends Component {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/clients', data, {
-                headers: {
-                    'x-api-key': 'sk_test_51J0ZQvK5', // Replace with your actual API key
-                },
-            });
+            const response = await apiClient.post('/clients', data);
             toast.success('Client added successfully!');
             console.log('Response:', response.data);
 
@@ -123,7 +120,7 @@ class Form extends Component {
             <form onSubmit={this.submitHandler} className="contactForm">
                 <Grid container spacing={4}>
                     {/* Dropdown for User Type */}
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} sm={12}>
                         <Grid className="formInput">
                             <select
                                 className="form-control"
@@ -140,7 +137,7 @@ class Form extends Component {
 
                     {/* Conditional Fields */}
                     {userType === 'entreprise' ? (
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={12}>
                             <Grid className="formInput">
                                 <input
                                     placeholder="Nom d'entreprise"
@@ -226,7 +223,7 @@ class Form extends Component {
 
                     {/* Submit Button */}
                     <Grid item xs={12} sm={6}>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Envoyer</Button>
                     </Grid>
                 </Grid>
             </form>
