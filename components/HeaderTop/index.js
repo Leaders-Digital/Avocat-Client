@@ -4,10 +4,13 @@ import PlaceIcon from '@mui/icons-material/Place';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import Link from 'next/link';
 import apiClient from '../../service/apiClient';
+import { UserOutlined } from '@ant-design/icons';
+
 
 const HeaderTop = (props) => {
     const [userId, setUserId] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
+    
 
     const getUser = async () => {
         try {
@@ -15,6 +18,16 @@ const HeaderTop = (props) => {
             setUserId(res.data.user.id);
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const getUserInfo = async (userId) => {
+        try {
+            const res = await apiClient.get(`/clients/${userId}`);
+            setUserInfo(res.data);
+           
+        } catch (error) {
+            console.error(error);
         }
     };
 
@@ -58,21 +71,21 @@ const HeaderTop = (props) => {
                 </Grid>
                 {
                     !userId ? (
-                        <Hidden smDown>
-                            <Grid item lg={2} md={3} xs={12} className="text-right">
+                       
+                            <Grid item lg={2} md={3} xs={12} className="text-center">
                                 <Link className="btnStyle btnOutlined btnRadius" href="/login">Espace Membre</Link>
                             </Grid>
-                        </Hidden>
+                       
                     ) : (
-                        <Hidden smDown>
-                            <Grid item lg={2} md={3} xs={12} className="text-right">
+                    
+                            <Grid item lg={2} md={3} xs={12} className="text-center">
                                 <Button
                                     className="btnStyle btnOutlined btnRadius"
                                     aria-controls="account-menu"
                                     aria-haspopup="true"
                                     onClick={handleMenuOpen}
                                 >
-                                    Mon compte
+                                    <UserOutlined size={50}/>
                                 </Button>
                                 <Menu
                                     id="account-menu"
@@ -100,7 +113,7 @@ const HeaderTop = (props) => {
                                     </MenuItem>
                                 </Menu>
                             </Grid>
-                        </Hidden>
+                    
                     )
                 }
             </Grid>
