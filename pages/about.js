@@ -13,8 +13,11 @@ import CounterArea from '../components/CounterArea'
 import BlogArea from '../components/BlogArea'
 import NewsLetter from '../components/Newsletter'
 
-const aboutText = ['Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at', 'and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum'
-]
+const aboutText = [
+    "Nous disposons d’une équipe expérimentée de comptables, avocats, juridiques, financiers, experts dans les affaires des entreprises et dans les consultations juridiques en droit tunisien. Nous proposons nos services aux particuliers et aux entreprises pour :",
+    "Encadrer juridiquement nos clients au moyen de conseils et de sous-traitance. Assurer la rédaction de contrats nationaux et internationaux de tout genre et dans trois principales langues (français, anglais et arabe). Mettre en œuvre les différents montages juridiques. Assister et représenter nos clients auprès des tribunaux et de l’administration tunisienne et étrangère. Faire l’audit et l’expertise juridique (identifier des risques et les lacunes d’ordre juridique et mettre en œuvre des recommandations de régularisation)."
+];
+
 const breadcumbMenu = [
     { name: 'Accueil', route: '/' },
     { name: 'About us' }
@@ -24,7 +27,7 @@ const AboutPage = () => {
     return (
         <Fragment>
             <Head>
-                <title>About us</title>
+                <title>International business consulting - Qui Sommes Nous</title>
             </Head>
             <header className="headerArea">
                 <HeaderTop className="headerTop" />
@@ -38,8 +41,8 @@ const AboutPage = () => {
             <Service className="bgColor" />
             <About
                 className="aboutAreaStyleTwo"
-                title="Why You Need Us"
-                subTitle="We Are Expert"
+                title="Pourquoi avez-vous besoin de nous ?"
+                subTitle="Nous sommes des experts"
                 images="/images/about/1.jpg"
                 pragraphs={aboutText}
                 changeOrder="changeOrder"
@@ -55,14 +58,14 @@ const AboutPage = () => {
                 className="counterAreaStyleTwo"
             />
             <TeamMember
-                title="Qualified Attorneys "
-                subTitle="Meet Our Experts"
+                title="Avocats qualifiés "
+                subTitle="Rencontrez nos experts"
                 slider={true}
             />
-            <BlogArea className="blogArea"
+            {/* <BlogArea className="blogArea"
                 title="Latest News"
                 subTitle="From Our Blog"
-            />
+            /> */}
             <NewsLetter />
         </Fragment>
     )

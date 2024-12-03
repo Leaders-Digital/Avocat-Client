@@ -3,11 +3,12 @@ import { Parallax } from 'react-parallax';
 import { Grid } from '@mui/material'
 import dynamic from 'next/dynamic'
 const counters = [
-    { value: '95', title: 'Cases Won', level: '%' },
-    { value: '863', title: 'Trusted Client' },
-    { value: '126', title: 'Dedicated Lawyer', level: '+' },
-    { value: '25', title: 'Case Dismissed', level: '%' },
-]
+    { value: '95', title: 'Affaires gagnées', level: '%' },
+    { value: '863', title: 'Clients de confiance' },
+    { value: '126', title: 'Avocats dédiés', level: '+' },
+    { value: '25', title: 'Affaires rejetées', level: '%' },
+];
+
 const Odometer = dynamic(import('react-odometerjs'), {
     ssr: false,
     loading: () => 0

@@ -46,7 +46,7 @@ const HeaderBottom = props => {
 
                             <li><Link href='/about' className={router.pathname == "/about"}>Qui Sommes Nous</Link></li>
 
-                            <li><Link href='/blog' className={router.pathname == "/blog" || router.pathname == "/blog/[id]" ? "active" : ""}>Blog</Link> </li>
+                            {/* <li><Link href='/blog' className={router.pathname == "/blog" || router.pathname == "/blog/[id]" ? "active" : ""}>Blog</Link> </li> */}
                                 
                            
 

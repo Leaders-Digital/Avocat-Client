@@ -16,7 +16,8 @@ const Contact = () => {
     return (
         <Fragment>
             <Head>
-                <title>Contact us</title>
+                <title>International business consulting - Contactez-nous
+                </title>
             </Head>
             <header className="headerArea">
                 <HeaderTop className="headerTop" />

@@ -7,7 +7,7 @@ import HeaderBottom from '../../components/HeaderBottom';
 import Breadcumb from '../../components/Breadcumb';
 import apiClient from '../../service/apiClient';
 import { useRouter } from 'next/router';
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined,DownloadOutlined  } from '@ant-design/icons';
 
 const { Panel } = Collapse;
 
@@ -50,7 +50,7 @@ const MonCompte = () => {
             console.error(error);
         }
     };
-    console.log(userInfo.nom);
+
 
 
     // Verify user authentication
@@ -97,6 +97,19 @@ const MonCompte = () => {
         getUser();
     }, []);
 
+    const handleReclamationSubmit = async (values) => {
+        try {
+            const response = await apiClient.post('/reclamation/createReclamation', values);
+            if (response.status) {
+                message.success('Réclamation envoyée avec succès');
+                form.resetFields();
+            }
+        } catch (error) {
+            console.error('Error details:', error);
+            message.error("Une erreur s'est produite lors de l'envoi de la réclamation.");
+        }
+    };
+
     // Show modal with detailed affaire
     const showModal = (record) => {
         setSelectedAffaire(record);
@@ -136,22 +149,39 @@ const MonCompte = () => {
     }));
 
     const columnsDoc = [
-
         {
             title: 'Documents',
-            dataIndex: 'documents', // This will map to the documents array
+            dataIndex: 'documents',
             key: 'documents',
             render: (documents) => (
                 <div>
-                    {documents?.map((doc, index) => (
-                        <Button key={index} type="link" href={doc} target="_blank">
-                            Document {index + 1}
-                        </Button>
-                    ))}
+                    {documents?.map((doc, index) => {
+                        // Normalisation du chemin
+                        const normalizedPath = doc.replace(/\\/g, '/');
+                        const fileName = normalizedPath.split('/').pop();
+    
+                        return (
+                            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {/* Lien pour visualiser le document */}
+                                <Button type="link" href={doc} target="_blank">
+                                    {fileName}
+                                </Button>
+                                {/* Icône pour télécharger le document */}
+                                <Button
+                                    type="link"
+                                    icon={<DownloadOutlined />}
+                                    href={doc}
+                                    target="_blank"
+                                    download
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             ),
         },
     ];
+    
 
     return (
         <Fragment>
@@ -330,13 +360,12 @@ const MonCompte = () => {
                                         prenom: userInfo.prenom,
                                         email: userInfo.email,
                                         telephone: userInfo.telephone || '',
-
                                     }}
+                                    onFinish={handleReclamationSubmit}
                                 >
-                                    <Form.Item
+                                    {/* <Form.Item
                                         label="Nom"
                                         name="nom"
-                                        initialValue={userInfo.nom}
                                         rules={[{ required: true, message: 'Veuillez saisir votre nom' }]}
                                     >
                                         <Input disabled />
@@ -344,7 +373,6 @@ const MonCompte = () => {
                                     <Form.Item
                                         label="Prenom"
                                         name="prenom"
-                                        initialValue={userInfo.prenom}
                                         rules={[{ required: true, message: 'Veuillez saisir votre Prenom' }]}
                                     >
                                         <Input disabled />
@@ -352,7 +380,6 @@ const MonCompte = () => {
                                     <Form.Item
                                         label="Email"
                                         name="email"
-                                        initialValue={userInfo.email}
                                         rules={[{ required: true, type: 'email', message: 'Veuillez saisir un email valide' }]}
                                     >
                                         <Input disabled />
@@ -360,11 +387,10 @@ const MonCompte = () => {
                                     <Form.Item
                                         label="Téléphone"
                                         name="telephone"
-                                        initialValue={userInfo.telephone}
                                         rules={[{ required: true, message: 'Veuillez saisir votre numéro de téléphone' }]}
                                     >
                                         <Input disabled />
-                                    </Form.Item>
+                                    </Form.Item> */}
                                     <Form.Item
                                         label="Message"
                                         name="message"
@@ -380,6 +406,7 @@ const MonCompte = () => {
                                         Envoyer
                                     </Button>
                                 </Form>
+
                             </Tabs.TabPane>
 
                         </Tabs>
